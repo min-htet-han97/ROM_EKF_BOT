@@ -1,0 +1,51 @@
+<launch>
+
+ 
+
+  <arg name="wheel_radius"            default="0.033"/>
+  <arg name="wheel_radius_error"      default="0.033"/>
+  <arg name="wheel_separation"        default="0.17"/>
+  <arg name="wheel_separation_error"  default="0.17"/>
+  <arg name="model" default="$(find rom_robot_description)/urdf/rom_robot.urdf.xacro"/>
+  <arg name="world" default="empty_world"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rom_robot_description)/worlds/custom.world"/>
+    <!--<arg name="world_name" value="$(find rom_robot_description)/worlds/custom_001.world"/>-->
+
+    <arg name="paused"        value="false"/>
+    <arg name="use_sim_time"  value="true"/>
+    <arg name="gui"           value="true"/>
+    <arg name="headless"      value="false"/>
+    <arg name="debug"         value="false"/>
+    <!--<arg name="world_name"    value="$(arg world)"/>-->
+  </include>
+
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+        args="-unpause -urdf -model rom_robot -param robot_description"
+        output="screen" respawn="false"/>
+
+  <rosparam file="$(find joint_state_controller)/joint_state_controller.yaml" command="load"/>
+
+  <!-- Convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" 
+            respawn="false" output="screen"/>
+
+
+  <!-- Use the diff_drive_controller -->
+  <rosparam file="$(find rom_robot_description)/config/diff_drive.yaml" command="load"/>
+
+  <!-- Launch the controller manager with the wheel controller -->
+  <node name="controller_manager" pkg="controller_manager" type="spawner"
+            respawn="false" output="screen" args="joint_state_controller rom_robot_controller" />
+  <!-- Launch the noisy controller -->
+  <node name="noisy_controller_node" pkg="rom_ekf_robot" type="odom_controller_node"
+            output="screen" respawn="true">
+            <param name="wheel_radius"     value="$(eval arg('wheel_radius') + arg('wheel_radius_error'))"/>
+            <param name="wheel_separation" value="$(eval arg('wheel_separation') + arg('wheel_separation_error'))"/>
+  </node>
+     
+
+</launch>

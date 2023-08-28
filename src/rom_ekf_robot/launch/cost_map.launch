@@ -1,0 +1,10 @@
+
+<launch>
+<!--<node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
+    <rosparam file="$(find rom_ekf_robot)/config/costmap_basic.yaml" command="load" ns="/costmap_2d/costmap" />
+</node>-->
+
+<rosparam file="$(find rom_ekf_robot)/config/costmap_basic.yaml" command="load" ns="/costmap_2d/costmap" />
+<node pkg="costmap_2d" type="costmap_2d_node" name="costmap_2d" output="screen" /> 
+
+</launch>

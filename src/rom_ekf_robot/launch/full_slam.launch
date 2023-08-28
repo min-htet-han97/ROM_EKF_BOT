@@ -1,0 +1,35 @@
+
+<launch>
+
+<!--arg name="map_file" default="$(find rom_ekf_robot)/map/psa_ppt1_w_Rack_Name_2023-05-31_V5-1.yaml"/-->
+<arg name="map_file" default="$(find rom_ekf_robot)/map/my_map.yaml"/>
+
+<include file="$(find rom_robot_description)/launch/gazebo.launch"/>
+<node pkg="rom_ekf_robot" type="landmarks" name="landmarks_publisher" output="screen"/>
+<node pkg="rom_ekf_robot" type="ekf_slam_node" name="ekf_slam_node" output="screen"/>
+<!--<node pkg="rom_ekf_robot" type="path_planner" name="path_planner_node" output="screen"/>-->
+
+   <!--<node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
+    <rosparam file="$(find rom_ekf_robot)/config/costmap_basic.yaml" command="load" ns="costmap" />
+  </node>-->
+
+
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find rom_ekf_robot)/config/ekf_bot.rviz"/>
+
+<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
+
+
+<rosparam file="$(find rom_ekf_robot)/config/costmap_basic.yaml" command="load" ns="/costmap_2d/costmap" />
+
+<!--<rosparam file="$(find rom_ekf_robot)/config/costmap/costmap_common_params.yaml" command="load" ns="/global_costmap" />-->
+<!--<rosparam file="$(find rom_ekf_robot)/config/costmap/costmap_common_params.yaml" command="load" ns="/local_costmap" />-->
+
+
+<!--<param name="global_costmap_params" value="$(find rom_ekf_robot)/config/costmap/global_costmap_params.yaml"/> -->
+
+<!--<param name="local_costmap_params" value="$(find rom_ekf_robot)/config/costmap/local_costmap_params.yaml" /> -->
+
+
+<!--<node pkg="costmap_2d" type="costmap_2d_node" name="global_costmap_2d" output="screen"/>-->
+
+</launch>

@@ -1,0 +1,15 @@
+<launch>
+    <!-- Set the new topic name as a ROS parameter -->
+   <!-- <param name="/path_planner_node/costmap_2d/costmap/costmap" value="costmap_2d/costmap/costmap"/>
+    <param name="/path_planner_node/move_base_simple/goal" value="/move_base_simple/goal"/>  -->
+
+
+    <!-- Launch the node -->
+    <node name="path_planner_node" type="path_planner_node" pkg="rom_ekf_robot" output="screen">
+        <!-- Add any other necessary arguments or parameters for the node here -->
+          <remap from="/path_planner_node/costmap_2d/costmap/costmap" to="/costmap_2d/costmap/costmap" />
+          <remap from="/path_planner_node/move_base_simple/goal" to="/move_base_simple/goal" />
+
+
+    </node>
+</launch>

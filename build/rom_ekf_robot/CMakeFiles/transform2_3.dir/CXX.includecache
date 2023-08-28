@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/include/rom_ekf_robot/transform2_3.h
+iosfwd
+-
+cmath
+-
+iostream
+-
+vector
+-
+
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/src/transform2_3.cpp
+rom_ekf_robot/transform2_3.h
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/src/rom_ekf_robot/transform2_3.h
+iostream
+-
+string
+-
+sstream
+-
+cmath
+-
+

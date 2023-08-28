@@ -1,0 +1,2 @@
+rom_ekf_robot
+-DCATKIN_DEVEL_PREFIX=/home/rosserver/ROM_EKF_robot/devel -DCMAKE_INSTALL_PREFIX=/home/rosserver/ROM_EKF_robot/install -DCATKIN_WHITELIST_PACKAGES=rom_ekf_robot -G Unix Makefiles

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/rosserver/ROM_EKF_robot/install/setup.sh

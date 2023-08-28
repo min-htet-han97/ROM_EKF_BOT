@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/include/rom_ekf_robot/cylinder_detect.h
+vector
+-
+rom_ekf_robot/transform2_3.h
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/include/rom_ekf_robot/rom_ekf_robot/transform2_3.h
+
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/include/rom_ekf_robot/transform2_3.h
+iosfwd
+-
+cmath
+-
+iostream
+-
+vector
+-
+
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/src/cylinder_detect.cpp
+eigen3/Eigen/Dense
+-
+vector
+-
+iostream
+-
+rom_ekf_robot/transform2_3.h
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/src/rom_ekf_robot/transform2_3.h
+rom_ekf_robot/cylinder_detect.h
+/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/src/rom_ekf_robot/cylinder_detect.h
+

@@ -1,0 +1,8 @@
+prefix=/home/rosserver/ROM_EKF_robot/devel
+
+Name: rom_ekf_robot
+Description: Description of rom_ekf_robot
+Version: 0.0.0
+Cflags: -I/home/rosserver/ROM_EKF_robot/devel/include -I/home/rosserver/ROM_EKF_robot/src/rom_ekf_robot/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp rospy std_msgs tf urdf gazebo_msgs
