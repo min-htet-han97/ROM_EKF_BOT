@@ -2,6 +2,7 @@
 *
 * ROS Simulation Online Course
 * Min Htet Han (ROM Robotics)
+* minhtethan94@gmail.com
 * 
 **/
 
